@@ -1,16 +1,17 @@
-import React from 'react';
+// import React from 'react';
 import styles from './NotificationFAB.module.css';
 
 type NotificationFABProps = {
+  isOpen: boolean;
   onClick: () => void;
   hasUnread?: boolean;
 };
 
-const NotificationFAB: React.FC<NotificationFABProps> = ({ onClick, hasUnread = false }) => {
+const NotificationFAB = ({ isOpen, onClick, hasUnread = false }: NotificationFABProps) => {
   return (
-    <button className={styles.fab} onClick={onClick} aria-label="Notifications">
-      🔔
-      {hasUnread && <span className={styles.badge} />}
+    <button className={`${styles.fab} ${isOpen ? styles.open : ''}`} onClick={onClick} aria-label="Notifications">
+      {isOpen ? '✖️' : '🔔'}
+      {hasUnread && !isOpen && <span className={styles.badge} />}
     </button>
   );
 };
