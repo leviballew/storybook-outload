@@ -12,10 +12,11 @@
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  transition: transform 0.3s ease;
 }
 
-.fab:hover {
-  background-color: #0056b3;
+.open {
+  transform: rotate(45deg);
 }
 
 .badge {
