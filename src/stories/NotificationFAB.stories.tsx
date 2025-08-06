@@ -1,26 +1,26 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 import NotificationFAB from './NotificationFAB';
+import NotificationMenuWrapper from './NotificationMenuWrapper';
+import useNotificationState from './useNotificationState';
 
-const meta: Meta<typeof NotificationFAB> = {
+const meta: Meta = {
   title: 'Components/NotificationFAB',
   component: NotificationFAB,
-  tags: ['autodocs'],
 };
-
 export default meta;
 
-type Story = StoryObj<typeof NotificationFAB>;
+export const WithMenu = () => {
+  const { isOpen, toggleOpen, close } = useNotificationState();
 
-export const Default: Story = {
-  args: {
-    onClick: () => alert('Notifications clicked!'),
-    hasUnread: false,
-  },
+  return (
+    <>
+      <NotificationFAB isOpen={isOpen} onClick={toggleOpen} hasUnread />
+      <NotificationMenuWrapper isOpen={isOpen} onClose={close}>
+        <div>📦 Load #321 arrived at MASA</div>
+        <div>📦 Load #087 departed CFA</div>
+        <div>📦 Load #672 ready for inspection</div>
+      </NotificationMenuWrapper>
+    </>
+  );
 };
 
-export const WithUnread: Story = {
-  args: {
-    onClick: () => alert('Notifications clicked!'),
-    hasUnread: true,
-  },
-};
