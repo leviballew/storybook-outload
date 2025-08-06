@@ -7,7 +7,7 @@ type NotificationFABProps = {
   hasUnread?: boolean;
 };
 
-const NotificationFAB = ({ isOpen, onClick, hasUnread = false }: NotificationFABProps) => {
+const NotificationFAB = ({ isOpen, onClick, hasUnread = false }: NotificationFABProps): React.ReactElement => {
   return (
     <button className={`${styles.fab} ${isOpen ? styles.open : ''}`} onClick={onClick} aria-label="Notifications">
       {isOpen ? '✖️' : '🔔'}
